@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon/favicon.ico">
+
+    <title>TREVI - 이벤트별 통계</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- Datatables -->    
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="../index.html" class="site_title"><i class="fa fa-dashboard" style="border: none; margin-right: 3px;"></i><span>TREVI - 대시보드</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>운영 관리</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> 홈 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../index.html">대시보드</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-line-chart"></i> 방문자 분석 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="visitor_daily.html">방문자 수</a></li>
+                      <li><a href="weekly_trend.html">주간 트렌드</a></li>
+                      <li><a href="event_statistics.html">이벤트별 통계</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart"></i> 매출 통계 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="sales-period.html">기간별 매출</a></li>
+                      <li><a href="sales_product.html">상품별 매출</a></li>
+                      <li><a href="sales_target.html">목표 달성률</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-pie-chart"></i> 전환율 분석 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="daily_conversion_analysis.html">일별 전환율</a></li>
+                      <li><a href="monthly_conversion_analysis.html">월별 전환율</a></li>
+                      <li><a href="yearly_conversion_analysis.html">연도별 전환율</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-users"></i> 고객 분석 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="user_behavior_tracking.html">고객 활동 분석</a></li>
+                      <li><a href="inquiry_statistics.html">문의 통계</a></li>
+                      <li><a href="review_stats.html">리뷰 통계</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="menu_section">
+                <h3>기타</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-file-text-o"></i> 페이지 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="terms.html">이용약관</a></li>
+                      <li><a href="privacy.html">개인정보처리방침</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-gear"></i> 시스템 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="access_log.html">접속 로그</a></li>
+                      <li><a href="error_report.html">에러 리포트</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- /sidebar menu -->
+          </div>
+        </div>
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="py-1">
+            <div class="page-title" style="display: none;">
+              <div class="title_left">
+                <h3>방문자 분석</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-4 col-sm-4  ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트별 최다 조회 제품 <small>2025년도</small></h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <div id="echart_pie" style="height:350px;"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4  ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트별 방문자 수 통계 <small>2025년도</small></h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <div id="echart_pie2" style="height:350px;"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4  ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트별 총 매출액 <small>2025년도</small></h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Settings 1</a>
+                          <a class="dropdown-item" href="#">Settings 2</a>
+                        </div>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <div id="echart_donut3" style="height:350px;"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트 현황</h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div class="card-box table-responsive">
+        
+                  <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                        <th>이벤트명</th>
+                        <th>시작일</th>
+                        <th>종료일</th>
+                        <th>조회수 TOP1 제품명</th>
+                        <th>방문자 수</th>
+                        <th>총 판매 수량</th>
+                        <th>총 매출액</th>
+                        <th>등록자</th>
+                        <th>상태</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>밸런타인데이 스페셜</td>
+                        <td>2025/02/01</td>
+                        <td>2025/02/14</td>
+                        <td>TB-DX5I10JS</td>
+                        <td>2,848</td>
+                        <td>621</td>
+                        <td>₩18,920,000</td>
+                        <td>admin01</td>
+                        <td>종료</td>
+                      </tr>
+                      <tr>
+                        <td>새봄맞이 특가전</td>
+                        <td>2025/03/01</td>
+                        <td>2025/03/31</td>
+                        <td>ALB-R14690</td>
+                        <td>6,102</td>
+                        <td>1,702</td>
+                        <td>₩53,900,000</td>
+                        <td>admin01</td>
+                        <td>종료</td>
+                      </tr>
+                      <tr>
+                        <td>한여름 무더위 타파</td>
+                        <td>2025/07/01</td>
+                        <td>2025/07/31</td>
+                        <td>TB-DX5R20J</td>
+                        <td>5,264</td>
+                        <td>1,237</td>
+                        <td>₩45,860,000</td>
+                        <td>admin01</td>
+                        <td>진행중</td>
+                      </tr>
+                      <tr>
+                        <td>풍성한 한가위</td>
+                        <td>2025/09/01</td>
+                        <td>2025/09/30</td>
+                        <td>TB-DX5T20E</td>
+                        <td>4,923</td>
+                        <td>1,109</td>
+                        <td>₩38,450,000</td>
+                        <td>admin01</td>
+                        <td>진행예정</td>
+                      </tr>
+                      <tr>
+                        <td>연말연시 홀리데이</td>
+                        <td>2025/12/15</td>
+                        <td>2026/01/05</td>
+                        <td>TST-TX5R90RP</td>
+                        <td>3,712</td>
+                        <td>984</td>
+                        <td>₩30,320,000</td>
+                        <td>admin01</td>
+                        <td>진행예정</td>
+                      </tr>
+                    </tbody>
+                  </table>  
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            © 2025 (주)에이스라이프 ™ Inc.
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- morris.js -->
+    <script src="../vendors/raphael/raphael.min.js"></script>
+    <script src="../vendors/morris.js/morris.min.js"></script>
+    <!-- ECharts -->
+    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+    <script src="../vendors/echarts/map/js/world.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+	
+  </body>
+</html>
