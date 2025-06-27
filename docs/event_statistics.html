@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon/favicon.ico">
 
-    <title>TREVI - 접속 로그</title>
+    <title>TREVI - 이벤트별 통계</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +18,13 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- Datatables -->    
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
@@ -26,14 +33,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-    <!-- Datatables -->    
-    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-      <!-- Custom Theme Style -->
+    <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
   </head>
@@ -44,7 +44,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="../index.html" class="site_title"><i class="fa fa-dashboard" style="border: none; margin-right: 3px;"></i><span>TREVI - 대시보드</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-dashboard" style="border: none; margin-right: 3px;"></i><span>TREVI - 대시보드</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -58,7 +58,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> 홈 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../index.html">대시보드</a></li>
+                      <li><a href="index.html">대시보드</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-line-chart"></i> 방문자 분석 <span class="fa fa-chevron-down"></span></a>
@@ -138,53 +138,169 @@
           <!-- /top tiles -->
 
           <div class="row">
-
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-4 col-sm-4  ">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>접속 로그</h2>
+                  <h2>이벤트별 최다 조회 제품 <small>2025년도</small></h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+
+                  <div id="echart_pie" style="height:350px;"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4  ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트별 방문자 수 통계 <small>2025년도</small></h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <div id="echart_pie2" style="height:350px;"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4  ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트별 총 매출액 <small>2025년도</small></h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Settings 1</a>
+                          <a class="dropdown-item" href="#">Settings 2</a>
+                        </div>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <div id="echart_donut3" style="height:350px;"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>이벤트 현황</h2>
+                  <ul class="nav navbar-right panel_toolbox" style="min-width: 0px !important;">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div class="card-box table-responsive">
+        
                   <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                       <tr>
-                        <th style="width: 160px;">접속일시</th>
-                        <th style="width: 100px;">사용자ID</th>
-                        <th style="width: 120px;">브라우저</th>
-                        <th style="width: 100px;">OS</th>
-                        <th style="width: 100px;">언어</th>
-                        <th style="width: 200px;">접속 경로</th>
-                        <th style="width: 80px;">상태</th>
+                        <th>이벤트명</th>
+                        <th>시작일</th>
+                        <th>종료일</th>
+                        <th>조회수 TOP1 제품명</th>
+                        <th>방문자 수</th>
+                        <th>총 판매 수량</th>
+                        <th>총 매출액</th>
+                        <th>등록자</th>
+                        <th>상태</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td>2025-05-14 09:32</td><td>admin01</td><td>Chrome</td><td>Windows 10</td><td>ko-KR</td><td>/dashboard</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:30</td><td>guest99</td><td>Edge</td><td>Windows 11</td><td>en-US</td><td>/login</td><td>실패</td></tr>
-                      <tr><td>2025-05-14 09:27</td><td>jpark</td><td>Safari</td><td>macOS</td><td>ko-KR</td><td>/visitor_daily</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:23</td><td>admin02</td><td>Chrome</td><td>Windows 10</td><td>ko-KR</td><td>/error_report</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:20</td><td>userA</td><td>Firefox</td><td>Ubuntu</td><td>en-US</td><td>/access_log</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:17</td><td>test123</td><td>Chrome</td><td>Windows 11</td><td>ko-KR</td><td>/sales_product</td><td>실패</td></tr>
-                      <tr><td>2025-05-14 09:12</td><td>admin01</td><td>Chrome</td><td>Windows 10</td><td>ko-KR</td><td>/terms</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:09</td><td>guest01</td><td>Safari</td><td>macOS</td><td>en-US</td><td>/review_stats</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:07</td><td>jkim</td><td>Chrome</td><td>Windows 11</td><td>ko-KR</td><td>/login</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:05</td><td>manager1</td><td>Edge</td><td>Windows 10</td><td>en-US</td><td>/cache_clear</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 09:02</td><td>guest99</td><td>Edge</td><td>Windows 11</td><td>en-US</td><td>/login</td><td>실패</td></tr>
-                      <tr><td>2025-05-14 08:58</td><td>userB</td><td>Chrome</td><td>Windows 10</td><td>ko-KR</td><td>/sales-period</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:53</td><td>admin03</td><td>Firefox</td><td>Linux</td><td>en-US</td><td>/monthly_conversion_analysis</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:50</td><td>guest03</td><td>Chrome</td><td>Windows 11</td><td>en-US</td><td>/login</td><td>실패</td></tr>
-                      <tr><td>2025-05-14 08:48</td><td>admin01</td><td>Chrome</td><td>Windows 10</td><td>ko-KR</td><td>/backup</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:46</td><td>manager2</td><td>Edge</td><td>Windows 11</td><td>ko-KR</td><td>/privacy</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:42</td><td>userC</td><td>Safari</td><td>macOS</td><td>en-US</td><td>/event_statistics</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:39</td><td>jlee</td><td>Chrome</td><td>Windows 11</td><td>ko-KR</td><td>/sales_target</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:37</td><td>admin02</td><td>Chrome</td><td>Windows 10</td><td>ko-KR</td><td>/user_behavior_tracking</td><td>성공</td></tr>
-                      <tr><td>2025-05-14 08:34</td><td>guest02</td><td>Edge</td><td>Windows 10</td><td>en-US</td><td>/login</td><td>실패</td></tr>
+                      <tr>
+                        <td>밸런타인데이 스페셜</td>
+                        <td>2025/02/01</td>
+                        <td>2025/02/14</td>
+                        <td>TB-DX5I10JS</td>
+                        <td>2,848</td>
+                        <td>621</td>
+                        <td>₩18,920,000</td>
+                        <td>admin01</td>
+                        <td>종료</td>
+                      </tr>
+                      <tr>
+                        <td>새봄맞이 특가전</td>
+                        <td>2025/03/01</td>
+                        <td>2025/03/31</td>
+                        <td>ALB-R14690</td>
+                        <td>6,102</td>
+                        <td>1,702</td>
+                        <td>₩53,900,000</td>
+                        <td>admin01</td>
+                        <td>종료</td>
+                      </tr>
+                      <tr>
+                        <td>한여름 무더위 타파</td>
+                        <td>2025/07/01</td>
+                        <td>2025/07/31</td>
+                        <td>TB-DX5R20J</td>
+                        <td>5,264</td>
+                        <td>1,237</td>
+                        <td>₩45,860,000</td>
+                        <td>admin01</td>
+                        <td>진행중</td>
+                      </tr>
+                      <tr>
+                        <td>풍성한 한가위</td>
+                        <td>2025/09/01</td>
+                        <td>2025/09/30</td>
+                        <td>TB-DX5T20E</td>
+                        <td>4,923</td>
+                        <td>1,109</td>
+                        <td>₩38,450,000</td>
+                        <td>admin01</td>
+                        <td>진행예정</td>
+                      </tr>
+                      <tr>
+                        <td>연말연시 홀리데이</td>
+                        <td>2025/12/15</td>
+                        <td>2026/01/05</td>
+                        <td>TST-TX5R90RP</td>
+                        <td>3,712</td>
+                        <td>984</td>
+                        <td>₩30,320,000</td>
+                        <td>admin01</td>
+                        <td>진행예정</td>
+                      </tr>
                     </tbody>
-                  </table>
+                  </table>  
                 </div>
               </div>
-
             </div>
+          </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <!-- /page content -->
